@@ -2,53 +2,54 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Jachtseizoen!</title>
 
-  <title>Jachtseizoen</title>
+  <!-- ESSENTIEEL voor mobiel -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
   <style>
     body {
       margin: 0;
-      background: #000;
-      color: white;
       font-family: system-ui, sans-serif;
-    }
-
-    header {
-      text-align: center;
-      padding: 0.5rem;
-      font-size: 1.3rem;
       background: #111;
+      color: white;
+      text-align: center;
     }
 
-    #map-wrapper {
+    h1 {
+      margin: 10px 0;
+      font-size: 1.4rem;
+    }
+
+    /* Scrollbare container */
+    .map-container {
       width: 100vw;
-      height: calc(100vh - 3rem);
-      overflow: hidden;
-      touch-action: none; /* 👈 belangrijk */
+      height: calc(100vh - 60px);
+      overflow: auto;          /* <- belangrijk */
+      -webkit-overflow-scrolling: touch;
+      background: black;
     }
 
-    #map {
-      width: 100%;
-      transform-origin: 0 0;
-      touch-action: none;
-      user-select: none;
+    img {
+      display: block;
+      max-width: none;         /* <- ZO BELANGRIJK */
+      width: auto;
+      height: auto;
     }
   </style>
 </head>
 
 <body>
-  <header>🗺️ Jachtseizoen</header>
+  <h1>Jachtseizoen!</h1>
 
-  <div id="map-wrapper">
-    <img id="map" alt="Live kaart">
+  <div class="map-container">
+    <img id="screenshot" alt="Live kaart">
   </div>
 
   <script>
-    const img = document.getElementById("map");
-
     function refresh() {
-      img.src =
+      document.getElementById("screenshot").src =
         "https://res.cloudinary.com/dcpxo50o9/image/upload/jachtseizoen.png?t=" + Date.now();
     }
 
