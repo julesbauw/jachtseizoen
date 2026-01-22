@@ -1,20 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
-  <title>Live Screenshot</title>
-</head>
-<body>
-  <h1>Jachtseizoen!</h1>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jachtseizoen</title>
 
-  <img id="screenshot" style="max-width:100%;">
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0.5em 0;
+      font-size: 1.4rem;
+    }
+
+    .map-container {
+      width: 100vw;
+      height: calc(100vh - 3.5rem);
+      overflow: auto;              /* 👈 scroll & pan */
+      touch-action: pan-x pan-y;   /* 👈 mobiel scrollen */
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🗺️ Jachtseizoen</h1>
+
+  <div class="map-container">
+    <img id="screenshot" alt="Live kaart">
+  </div>
 
   <script>
-  setInterval(() => {
+    function refresh() {
       document.getElementById("screenshot").src =
-          "https://res.cloudinary.com/dcpxo50o9/image/upload/jachtseizoen.png?t=" + Date.now();
-  }, 5000);
-  </script>
+        "https://res.cloudinary.com/dcpxo50o9/image/upload/jachtseizoen.png?t=" + Date.now();
+    }
 
+    refresh();
+    setInterval(refresh, 5000);
+  </script>
 </body>
 </html>
-
