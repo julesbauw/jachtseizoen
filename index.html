@@ -2,48 +2,53 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
   <title>Jachtseizoen</title>
 
   <style>
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #111;
+      background: #000;
       color: white;
+      font-family: system-ui, sans-serif;
+    }
+
+    header {
       text-align: center;
+      padding: 0.5rem;
+      font-size: 1.3rem;
+      background: #111;
     }
 
-    h1 {
-      margin: 0.5em 0;
-      font-size: 1.4rem;
-    }
-
-    .map-container {
+    #map-wrapper {
       width: 100vw;
-      height: calc(100vh - 3.5rem);
-      overflow: auto;              /* 👈 scroll & pan */
-      touch-action: pan-x pan-y;   /* 👈 mobiel scrollen */
+      height: calc(100vh - 3rem);
+      overflow: hidden;
+      touch-action: none; /* 👈 belangrijk */
     }
 
-    img {
+    #map {
       width: 100%;
-      height: auto;
-      display: block;
+      transform-origin: 0 0;
+      touch-action: none;
+      user-select: none;
     }
   </style>
 </head>
 
 <body>
-  <h1>🗺️ Jachtseizoen</h1>
+  <header>🗺️ Jachtseizoen</header>
 
-  <div class="map-container">
-    <img id="screenshot" alt="Live kaart">
+  <div id="map-wrapper">
+    <img id="map" alt="Live kaart">
   </div>
 
   <script>
+    const img = document.getElementById("map");
+
     function refresh() {
-      document.getElementById("screenshot").src =
+      img.src =
         "https://res.cloudinary.com/dcpxo50o9/image/upload/jachtseizoen.png?t=" + Date.now();
     }
 
