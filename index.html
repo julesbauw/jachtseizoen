@@ -9,35 +9,40 @@
         content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #111;
-      color: white;
-      text-align: center;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #111;
+    color: white;
+    text-align: center;
+  }
 
-    h1 {
-      margin: 10px 0;
-      font-size: 1.4rem;
-    }
+  h1 {
+    margin: 10px 0;
+    font-size: 1.4rem;
+  }
 
-    /* Scrollbare container */
-    .map-container {
-      width: 100vw;
-      height: calc(100vh - 60px);
-      overflow: auto;          /* <- belangrijk */
-      -webkit-overflow-scrolling: touch;
-      background: black;
-    }
+  .map-container {
+    width: 100vw;
+    height: calc(100vh - 60px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background: black;
+  }
 
-    img {
-      display: block;
-      max-width: none;         /* <- ZO BELANGRIJK */
-      width: auto;
-      height: auto;
-    }
-  </style>
+  img {
+    display: block;
+
+    /* 👇 dit is de sleutel */
+    width: 100%;
+    height: auto;
+
+    /* MAAR: geen max-width beperking */
+    max-width: none;
+  }
+</style>
+
 </head>
 
 <body>
